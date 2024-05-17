@@ -34,8 +34,8 @@ const userSchema = new Schema(
     },
 
     // Tokens & Expire
-    forgotPasswordOTP: String,
-    forgotPasswordExpire: Date,
+    passwordResetToken: String,
+    passwordResetExpire: Date,
     verifyEmailOTP: String,
     verifyEmailExpire: Date,
   },

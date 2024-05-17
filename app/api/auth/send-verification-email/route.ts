@@ -17,10 +17,9 @@ const html = `
 </head>
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 10px; background-color: #fff; display:flex; justify-content:center; align-items:center;">
     <div style="max-width: 600px; margin: 20px auto; padding: 20px; ">
-        <h2 style="color: #333; text-align: center;">OTP Email</h2>
         <p style="color: #666; line-height: 1.6; text-align: center;">Your One Time Password (OTP) is:</p>
         <div style="font-size: 24px; text-align: center; margin-bottom: 30px;"><strong>{{OTP_CODE}}</strong></div>
-        <p style="color: #999; text-align: center;">Please use this OTP to complete your action. This OTP is valid for a {{TIME}} minutes.</p>
+        <p style="color: #999; text-align: center;">Please use this OTP to complete your action. This OTP is valid for a {{MINUTES}} minutes.</p>
         <p style="margin-top: 30px; text-align: center; color: #999;">This email was sent to you in response to your request. If you didn't request this, you can safely ignore this email.</p>
     </div>
 </body>
@@ -73,13 +72,13 @@ export async function POST(request: NextRequest) {
     const info = await sendMail(
       user.email,
       "Verify your email",
-      html.replace("{{OTP_CODE}}", otp).replace("{{TIME}}", "10")
+      html.replace("{{OTP_CODE}}", otp).replace("{{MINUTES}}", "10")
     );
 
     if (!info) {
       return NextResponse.json(
         {
-          message: "Failed to send OTP",
+          message: "Failed to send OTP to your email address",
           success: false,
         },
         { status: 500 }
@@ -88,7 +87,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        message: "OTP sent to your email",
+        message: "OTP sent to your email address",
         success: true,
       },
       { status: 200 }

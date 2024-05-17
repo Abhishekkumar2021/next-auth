@@ -1,26 +1,26 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 const transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "22550a0b861d92",
-      pass: "45cab8ed38e3e1"
-    }
+  host: process.env.SMTP_HOST as string,
+  port: process.env.SMTP_PORT as unknown as number,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
 });
 
 export const sendMail = async (to: string, subject: string, html: string) => {
-    try {
-        const mailOptions = {
-            from: 'abhishek@gmail.com',
-            to,
-            subject,
-            html
-        };
+  try {
+    const mailOptions = {
+      from: "abhishek@gmail.com",
+      to,
+      subject,
+      html,
+    };
 
-        const result = await transport.sendMail(mailOptions);
-        return result;
-    } catch (error : any) {
-        throw new Error(error.message);
-    }
+    const result = await transport.sendMail(mailOptions);
+    return result;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
 };

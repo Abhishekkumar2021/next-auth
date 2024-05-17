@@ -3,7 +3,7 @@ import { Loader } from "lucide-react";
 import useSWR from "swr";
 
 export default function ProfilePage() {
-  const { data, error, isLoading } = useSWR("/api/users/me", async (url) => {
+  const { data, error, isLoading } = useSWR("/api/user/me", async (url) => {
     const res = await fetch(url, {
       method: "GET",
     });

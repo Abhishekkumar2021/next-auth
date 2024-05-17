@@ -38,13 +38,13 @@ export default function Home() {
         }
         }>System Mode</Button>
       </div>
-      <Link href="/login">
+      <Link href="/auth/login">
         <Button variant="link">Login Page</Button>
       </Link>
-      <Link href="/signup">
+      <Link href="/auth/signup">
         <Button variant="link">Signup Page</Button>
       </Link>
-      <Link href="/profile">
+      <Link href="/user/profile">
         <Button variant="link">Profile Page</Button>
       </Link>
     </main>

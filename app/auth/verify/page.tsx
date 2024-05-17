@@ -61,7 +61,7 @@ export default function Verify() {
           throw new Error("OTP should be of 6 characters");
         }
   
-        const res = await fetch("/api/auth/check-verification-otp", {
+        const res = await fetch("/api/auth/verify-email", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export default function Verify() {
             description: data.message,
           });
   
-          router.push("/dashboard");
+          router.push("/user/dashboard");
         } else {
           throw new Error(data.message);
         }

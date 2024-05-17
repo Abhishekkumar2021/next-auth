@@ -54,7 +54,7 @@ export default function LoginPage() {
       setLoading(true);
       const response = await fetch("/api/auth/login", {
         method: "POST",
-        
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -66,7 +66,7 @@ export default function LoginPage() {
           title: "Success",
           description: "You have been logged in successfully",
         });
-        router.push("/dashboard");
+        router.push("/user/dashboard");
       } else {
         throw new Error(data.message);
       }
@@ -143,12 +143,25 @@ export default function LoginPage() {
               </FormItem>
             )}
           />
-          <Separator />
-          <Link href="/signup">
-            <Button variant="link" type="button">Don&apos;t have an account? Sign up</Button>
-          </Link>
+          <div className="flex items-center justify-between flex-col">
+            <Separator />
+            <Link href="/auth/forgot-password">
+              <Button variant="link" type="button">
+                Forgot password?
+              </Button>
+            </Link>
+            <Link href="/auth/signup">
+              <Button variant="link" type="button">
+                Don&apos;t have an account? Sign up
+              </Button>
+            </Link>
+          </div>
           {loading ? (
-            <Button variant="default" disabled className="flex items-center justify-center gap-2">
+            <Button
+              variant="default"
+              disabled
+              className="flex items-center justify-center gap-2"
+            >
               <Loader className="animate-spin" />
               Logging in...
             </Button>

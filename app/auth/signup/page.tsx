@@ -72,7 +72,7 @@ export default function SignupPage() {
           title: "Success",
           description: data.message,
         })
-        router.push("/login")
+        router.push("/auth/login")
       } else {
         throw new Error(data.message)
       }
@@ -164,7 +164,7 @@ export default function SignupPage() {
           )}
         />
         <Separator />
-        <Link href="/login">
+        <Link href="/auth/login">
           <Button variant="link">Already have an account? Log in</Button>
         </Link>
 

@@ -18,7 +18,7 @@ export default function DashboardPage() {
                     title: "Success",
                     description: data.message,
                 });
-                router.push("/login");
+                router.push("/auth/login");
             }else{
                 throw new Error(data.message);
             }
